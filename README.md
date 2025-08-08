@@ -62,3 +62,14 @@ The app uses the Todoist REST API v2 to:
 - Tailwind CSS
 - Lucide React Icons
 - Todoist REST API v2
+
+##Screenshots
+- <img width="1912" height="916" alt="image" src="https://github.com/user-attachments/assets/f125c875-20dc-4990-83cb-76b5b26e24a6" />
+- <img width="1898" height="923" alt="image" src="https://github.com/user-attachments/assets/5e102600-6024-4e78-af40-dd2b6a05c311" />
+- <img width="1915" height="926" alt="image" src="https://github.com/user-attachments/assets/3491ea82-d4fe-46ac-a45b-d89dcb8713b6" />
+- <img width="1297" height="938" alt="image" src="https://github.com/user-attachments/assets/b049f2ab-6f6a-4382-88c9-a542a819e434" />
+
+
+
+
+
