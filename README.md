@@ -73,7 +73,7 @@ The app uses the Todoist REST API v2 to:
   
   <img width="1898" height="923" alt="image" src="https://github.com/user-attachments/assets/5e102600-6024-4e78-af40-dd2b6a05c311" />
   
-- Quiz to the knowledge:
+- Knowledge check Quiz:
   
   <img width="1915" height="926" alt="image" src="https://github.com/user-attachments/assets/3491ea82-d4fe-46ac-a45b-d89dcb8713b6" />
   
