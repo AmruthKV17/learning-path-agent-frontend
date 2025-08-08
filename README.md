@@ -1,4 +1,4 @@
-# IBM AI Agent with Todoist Integration
+# Learning Path Agent with Todoist Integration
 
 This React application provides a landing page where users can input queries that are sent to a Relay app AI agent. The AI agent creates projects and todos in Todoist, which are then displayed on a dedicated results page.
 
