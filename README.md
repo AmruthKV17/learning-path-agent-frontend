@@ -1,4 +1,4 @@
-# Learning Path Agent with Todoist Integration
+<img width="1913" height="915" alt="image" src="https://github.com/user-attachments/assets/ccb4d27b-b346-4590-b11a-5cf370cedaca" /># Learning Path Agent with Todoist Integration
 
 This React application provides a landing page where users can input queries that are sent to a Relay app AI agent. The AI agent creates projects and todos in Todoist, which are then displayed on a dedicated results page.
 
@@ -67,15 +67,24 @@ The app uses the Todoist REST API v2 to:
 
 - Landing Page:
   
-  <img width="1912" height="916" alt="image" src="https://github.com/user-attachments/assets/f125c875-20dc-4990-83cb-76b5b26e24a6" />
+  <img width="1913" height="915" alt="image" src="https://github.com/user-attachments/assets/7372fe99-ef88-4074-aa05-c0f186953a9a" />
+
   
 - Learing Path Scheduled by Agent:
   
-  <img width="1898" height="923" alt="image" src="https://github.com/user-attachments/assets/5e102600-6024-4e78-af40-dd2b6a05c311" />
+  <img width="1893" height="929" alt="image" src="https://github.com/user-attachments/assets/5953d188-8639-446b-a6eb-0ba97985217d" />
+
+  <img width="1894" height="927" alt="image" src="https://github.com/user-attachments/assets/b63bc5af-6b54-4402-a626-a4fdfc92d335" />
+
+
   
 - Knowledge check Quiz:
   
-  <img width="1915" height="926" alt="image" src="https://github.com/user-attachments/assets/3491ea82-d4fe-46ac-a45b-d89dcb8713b6" />
+  <img width="1910" height="925" alt="image" src="https://github.com/user-attachments/assets/406a66b5-bc00-4af0-90ec-36f6bf86cb9a" />
+
+  <img width="1892" height="845" alt="image" src="https://github.com/user-attachments/assets/1593fa6f-81b6-4e68-a549-86f101570f7a" />
+
+
   
 - AI Agent Workflow:
   
