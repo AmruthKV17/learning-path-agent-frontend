@@ -1,4 +1,4 @@
-# IBM AI Agent with Todoist Integration
+<img width="1913" height="915" alt="image" src="https://github.com/user-attachments/assets/ccb4d27b-b346-4590-b11a-5cf370cedaca" /># Learning Path Agent with Todoist Integration
 
 This React application provides a landing page where users can input queries that are sent to a Relay app AI agent. The AI agent creates projects and todos in Todoist, which are then displayed on a dedicated results page.
 
@@ -62,3 +62,35 @@ The app uses the Todoist REST API v2 to:
 - Tailwind CSS
 - Lucide React Icons
 - Todoist REST API v2
+
+## Screenshots
+
+- Landing Page:
+  
+  <img width="1913" height="915" alt="image" src="https://github.com/user-attachments/assets/7372fe99-ef88-4074-aa05-c0f186953a9a" />
+
+  
+- Learing Path Scheduled by Agent:
+  
+  <img width="1893" height="929" alt="image" src="https://github.com/user-attachments/assets/5953d188-8639-446b-a6eb-0ba97985217d" />
+
+  <img width="1894" height="927" alt="image" src="https://github.com/user-attachments/assets/b63bc5af-6b54-4402-a626-a4fdfc92d335" />
+
+
+  
+- Knowledge check Quiz:
+  
+  <img width="1910" height="925" alt="image" src="https://github.com/user-attachments/assets/406a66b5-bc00-4af0-90ec-36f6bf86cb9a" />
+
+  <img width="1892" height="845" alt="image" src="https://github.com/user-attachments/assets/1593fa6f-81b6-4e68-a549-86f101570f7a" />
+
+
+  
+- AI Agent Workflow:
+  
+  <img width="1297" height="938" alt="image" src="https://github.com/user-attachments/assets/b049f2ab-6f6a-4382-88c9-a542a819e434" />
+
+
+
+
+
