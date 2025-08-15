@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-route
 import { io } from "socket.io-client";
 import AIAgentPage from "./AIAgentPage";
 import QuizPage from "./QuizPage";
-
+import {AnimatedBackground, LayeredBackground} from 'animated-backgrounds'
 function LandingPage() {
   const [searchValue, setSearchValue] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
@@ -21,7 +21,7 @@ function LandingPage() {
 
   // Initialize Socket.IO connection
   useEffect(() => {
-    const newSocket = io('http://localhost:5000');
+    const newSocket = io('https://learning-path-agent-backend.onrender.com');
     setSocket(newSocket);
 
     // Cleanup on unmount
@@ -98,8 +98,31 @@ function LandingPage() {
     }
   };
 
+  const cosmicScene = [
+  { 
+    animation: 'fireflies', 
+    opacity: 0.8, 
+    blendMode: 'normal',
+    speed: 0.3 
+  },
+  { 
+    animation: 'cosmicDust', 
+    opacity: 0.8, 
+    blendMode: 'screen',
+    speed: 0.8 
+  },
+  { 
+    animation: 'auroraBorealis', 
+    opacity: 0.28, 
+    blendMode: 'lighten',
+    speed: 1.2
+  }
+];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50">
+    <div className="min-h-screen ">
+      {/* <AnimatedBackground animationName = "cosmicDust" theme="portfolio"/> */}
+      <LayeredBackground layers={cosmicScene}/>
       {isSubmitting && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/70 backdrop-blur-sm">
           <div className="bg-white border rounded-xl shadow-lg px-8 py-6 flex flex-col items-center">
@@ -140,20 +163,20 @@ function LandingPage() {
       </nav>
 
       {/* Main Content */}
-      <div className="max-w-4xl mx-auto px-6 pt-16 pb-12 text-center">
+      <div className="max-w-4xl mx-auto px-6 pt-8 pb-12 text-center">
         {/* Funding Banner */}
         <div className="inline-block bg-yellow-200 px-4 py-2 rounded-full text-sm font-medium mb-8">
           We haven't raised any funding since its just a prototype project 😅
         </div>
 
         {/* Hero Text */}
-        <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+        <h1 className="text-3xl md:text-5xl font-bold text-blue-950 mb-6 leading-tight">
           Because Googling Random Stuff
           <br />
           Isn't a Learning Plan
         </h1>
 
-        <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-xl  text-gray-700 mb-12 max-w-2xl mx-auto leading-relaxed">
           An AI-powered platform that turns any query into a clear topic, creates personalized learning paths, curates reliable resources and tests understanding — making learning faster, smarter, and more engaging.
         </p>
 
@@ -165,20 +188,20 @@ function LandingPage() {
 
         {/* Search Interface */}
         <div className="max-w-2xl mx-auto mb-8">
-          <div className="bg-white rounded-lg shadow-lg border p-4 mb-4">
+          <div className="bg-gradient-to-br from-fuchsia-100 via-violet-50 to-teal-100 rounded-lg shadow-lg border border-blue-300 p-4 mb-4">
             <form onSubmit={handleSubmit}>
               <div className="flex items-center justify-between">
                 <input
                   type="text"
                   placeholder="What you want to learn today?"
-                  className="flex-1 text-gray-700 outline-none"
+                  className="flex-1 text-gray-700 text-xl outline-none"
                   value={searchValue}
                   onChange={(e) => setSearchValue(e.target.value)}
                   onFocus={() => setShowDropdown(true)}
                 />
                 <button
                   type="submit"
-                  className="w-9 h-9 bg-black text-white rounded-full flex items-center justify-center cursor-pointer "
+                  className="w-9 h-9 bg-gradient-to-br from-fuchsia-600 via-blue-900 to-indigo-800 text-white rounded-full flex items-center justify-center cursor-pointer "
                 >
                   <span className="text-sm">→</span>
                 </button>

@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { io } from "socket.io-client";
 import TodoistService from "./services/todoistService";
 import TodoistDisplay from "./components/TodoistDisplay";
+import {LayeredBackground} from 'animated-backgrounds'
 
 export default function AIAgentPage() {
   const navigate = useNavigate();
@@ -147,8 +148,30 @@ export default function AIAgentPage() {
     navigate("/");
   };
 
+    const cosmicScene = [
+  { 
+    animation: 'fireflies', 
+    opacity: 0.8, 
+    blendMode: 'normal',
+    speed: 0.3 
+  },
+  { 
+    animation: 'cosmicDust', 
+    opacity: 0.8, 
+    blendMode: 'screen',
+    speed: 0.8 
+  },
+  { 
+    animation: 'auroraBorealis', 
+    opacity: 0.28, 
+    blendMode: 'lighten',
+    speed: 1.2
+  }
+];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50">
+    <div className="min-h-screen ">
+      <LayeredBackground layers={cosmicScene}/>
       {/* Navigation */}
       <nav className="flex items-center justify-between px-6 py-4">
         <div className="flex items-center space-x-2">
@@ -161,7 +184,7 @@ export default function AIAgentPage() {
 
         <button
           onClick={handleBackToHome}
-          className="px-4 py-2 bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow flex items-center space-x-2"
+          className="px-4 py-2 bg-transparent hover:bg-gray-50/40 rounded-lg shadow-sm border hover:shadow-md transition-shadow flex items-center space-x-2"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Home</span>
@@ -241,7 +264,7 @@ export default function AIAgentPage() {
             </div>
 
             {/* Todoist Integration */}
-            <div className="bg-white rounded-lg shadow-lg border p-6">
+            <div className="bg-gray-50/30 rounded-lg shadow-lg border p-6">
               <div className="flex items-center space-x-2 mb-6">
                 <Sparkles className="w-5 h-5 text-blue-500" />
                 <h3 className="text-lg font-semibold text-gray-900">
@@ -267,7 +290,7 @@ export default function AIAgentPage() {
                     .slice(0, 12);
                   navigate("/quiz", { state: { topics } });
                 }}
-                className="bg-black text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors"
+                className="bg-slate-800 text-white cursor-pointer hover:bg-transparent hover:text-slate-900 border  px-6 py-3 rounded-lg font-medium  transition-colors"
               >
                 Test Your Knowledge
               </button>

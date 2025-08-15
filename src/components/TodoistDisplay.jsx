@@ -107,24 +107,8 @@ export default function TodoistDisplay({ project, todos, isLoading, error }) {
     return items;
   }
 
-  if (isLoading) {
-    return (
-      <div className="bg-white rounded-lg shadow-lg border p-6">
-        <div className="flex items-center space-x-3 mb-4">
-          <div className="w-6 h-6 bg-gray-200 rounded animate-pulse"></div>
-          <div className="h-6 bg-gray-200 rounded w-48 animate-pulse"></div>
-        </div>
-        <div className="space-y-3">
-          {[1, 2, 3].map((i) => (
-            <div key={i} className="flex items-center space-x-3">
-              <div className="w-4 h-4 bg-gray-200 rounded-full animate-pulse"></div>
-              <div className="h-4 bg-gray-200 rounded w-64 animate-pulse"></div>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
+  // We want tasks-only loading: consider todos not yet received as loading
+  const todosNotYetReceived = todos == null;
 
   if (error) {
     return (
@@ -138,7 +122,7 @@ export default function TodoistDisplay({ project, todos, isLoading, error }) {
     );
   }
 
-  if (!project || !localTodos) {
+  if (!project) {
     return (
       <div className="bg-white rounded-lg shadow-lg border p-6">
         <div className="flex items-center space-x-3 text-gray-500 mb-4">
@@ -182,9 +166,9 @@ export default function TodoistDisplay({ project, todos, isLoading, error }) {
   return (
     <div className="space-y-6">
       {/* Project Header */}
-      <div className="bg-white rounded-lg shadow-lg border p-6">
+      <div className="bg-blue-50 rounded-lg shadow-lg border p-6">
         <div className="flex items-start justify-between mb-4">
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-3 ">
             <FolderOpen className="w-6 h-6 text-blue-500" />
             <div>
               <h3 className="text-xl font-semibold text-gray-900">
@@ -208,13 +192,25 @@ export default function TodoistDisplay({ project, todos, isLoading, error }) {
       </div>
 
       {/* Todos List */}
-      <div className="bg-white rounded-lg shadow-lg border p-6">
+      <div className="bg-orange-50/50 rounded-lg shadow-lg border p-6">
         <div className="flex items-center space-x-2 mb-6">
           <ListTodo className="w-5 h-5 text-gray-600" />
           <h3 className="text-lg font-semibold text-gray-900">Tasks</h3>
         </div>
 
-        {localTodos.length === 0 ? (
+        {todosNotYetReceived || isLoading ? (
+          <div className="space-y-3" aria-busy="true">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="flex items-start space-x-3 p-3 rounded-lg border bg-gray-50 border-gray-200 animate-pulse">
+                <div className="w-5 h-5 rounded-full bg-gray-200" />
+                <div className="flex-1 space-y-2">
+                  <div className="h-4 bg-gray-200 rounded w-1/2" />
+                  <div className="h-3 bg-gray-100 rounded w-1/3" />
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : localTodos.length === 0 ? (
           <div className="text-center py-8">
             <Circle className="w-12 h-12 text-gray-300 mx-auto mb-4" />
             <p className="text-gray-500">No tasks found in this project</p>
@@ -227,7 +223,7 @@ export default function TodoistDisplay({ project, todos, isLoading, error }) {
                 <div
                   key={todo.id}
                   className={`flex flex-col space-y-2 p-3 rounded-lg border ${
-                    todo.completed ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'
+                    todo.completed ? 'bg-green-200 border-green-200' : 'bg-gray-50 border-gray-200'
                   } ${isUpdating ? 'opacity-75' : ''}`}
                 >
                   <div className="flex items-start space-x-3">
@@ -290,14 +286,14 @@ export default function TodoistDisplay({ project, todos, isLoading, error }) {
                     </div>
                   </div>
                   {/* Learning Resources Section */}
-                  <div className="mt-2 ml-8">
+                  <div className="mt-2 ml-8 flex flex-col items-center">
                     <button
-                      className="text-xs text-blue-600 underline hover:text-blue-800"
+                      className=" border px-3 py-1.5 cursor-pointer  border-secondary  rounded-md inline-flex items-center justify-center  text-center  font-medium text-secondary bg-blue-400/30 hover:bg-blue-100  disabled:bg-amber-100 disabled:border-gray-3 disabled:text-dark-5"
                       onClick={() => handleFetchResources(todo)}
                       disabled={loadingResources[todo.id]}
                     >
                       {resourcesCache[todo.id]
-                        ? "Show Learning Resources"
+                        ? "Learning Resources:"
                         : loadingResources[todo.id]
                         ? "Loading..."
                         : "Get Learning Resources"}
@@ -309,7 +305,7 @@ export default function TodoistDisplay({ project, todos, isLoading, error }) {
                     {resourcesCache[todo.id] && (
                       <ul className="mt-2 space-y-1">
                         {parseMarkdownLinks(resourcesCache[todo.id]).map((item, idx) => (
-                          <li key={idx} className="flex items-center space-x-1">
+                          <li key={idx} className="flex items-center space-x-1 border-1 border-gray-200 px-2 py-1 bg-blue-50/45">
                             <a
                               href={item.url}
                               target="_blank"
@@ -333,23 +329,23 @@ export default function TodoistDisplay({ project, todos, isLoading, error }) {
 
       {/* Summary Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-white rounded-lg shadow-lg border p-4 text-center">
+        <div className="bg-teal-200/30 rounded-lg shadow-lg border p-4 text-center">
           <div className="text-2xl font-bold text-green-600">
             {localTodos.filter(todo => todo.completed).length}
           </div>
-          <div className="text-sm text-gray-500">Completed</div>
+          <div className="text-md font-medium text-green-700">Completed</div>
         </div>
-        <div className="bg-white rounded-lg shadow-lg border p-4 text-center">
+        <div className="bg-blue-300/30 rounded-lg shadow-lg border p-4 text-center">
           <div className="text-2xl font-bold text-blue-600">
             {localTodos.filter(todo => !todo.completed).length}
           </div>
-          <div className="text-sm text-gray-500">Pending</div>
+          <div className="text-md font-medium text-blue-700">Pending</div>
         </div>
-        <div className="bg-white rounded-lg shadow-lg border p-4 text-center">
+        <div className="bg-red-200/30 rounded-lg shadow-lg border p-4 text-center">
           <div className="text-2xl font-bold text-orange-600">
             {localTodos.filter(todo => todo.priority >= 3).length}
           </div>
-          <div className="text-sm text-gray-500">High Priority</div>
+          <div className="text-md font-medium text-red-700">High Priority</div>
         </div>
       </div>
     </div>
